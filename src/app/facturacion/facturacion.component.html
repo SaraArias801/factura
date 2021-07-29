@@ -1,0 +1,43 @@
+<h1>Facturas</h1>
+
+<p *ngIf="siExisten" >No existen facturas agregadas</p> <button (click)="agregarFactura()">
+
+Agregar Factura
+
+</button>
+
+<div *ngif="!siExisten" class="container">
+
+<div *ngFor="let factura of facturas; let i = index">
+
+<hr>
+
+<h2>Numero de factura: {{factura.id}}</h2>
+
+<h2>Fecha de factura: {{factura.fecha | date:"short"}}</h2>
+
+<p *ngIf="factura.items.length <= 0">No existen productos agregados</p>
+
+<button (click)="agregarItem(i)">
+
+Agregar Producto
+
+</button>
+
+<input type="text" [(ngModel)]="nombre">
+
+<input type="number" [(ngModel)] = "precio">
+
+<div *nglf="factura.items.length > 0">
+
+<ul *ngFor="let item of factura.items">
+
+<li>{{item.nombre}}: {{item.precio}}</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
